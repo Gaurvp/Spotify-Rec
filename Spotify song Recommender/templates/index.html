@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify Song Recommender</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .recommendations {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Spotify Song Recommender</h1>
+    <p>Click below to log in and get song recommendations based on your Spotify account.</p>
+    <a href="/login"><button>Login with Spotify</button></a>
+
+    {% if top_tracks %}
+    <div class="recommendations">
+        <h2>Your Recommendations</h2>
+        <ul id="songs-list">
+            {% for song in top_tracks %}
+                <li>{{ song }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+
+</body>
+</html>
