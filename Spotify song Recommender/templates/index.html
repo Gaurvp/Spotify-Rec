@@ -8,61 +8,60 @@
         html, body {
             margin: 0;
             padding: 0;
-            height: 100%; /* Ensure the elements take up full height */
+            height: 100%;
         }
         body {
             font-family: Arial, sans-serif;
             text-align: center;
             display: flex;
             flex-direction: column;
-            justify-content: flex-start; /* Align content to the top */
+            justify-content: flex-start; 
         }
         
         .background {
-            background-image: url("/static/Spotify_Full_Logo_RGB_Green.png");
+            background-image: url('{{ url_for('static', filename='Spotify_Full_Logo_RGB_Green.png') }}');
             background-size: 2000px;
             background-position: center;
             background-repeat: no-repeat;
-            position: fixed; /* Fix the background image */
+            position: fixed; 
             top: 0;
             left: 0;
-            width: 100%; /* Full width */
-            height: 100%; /* Full height */
-            z-index: -1; /* Place it behind the content */
+            width: 100%; 
+            height: 100%; 
+            z-index: -1;
             background-color: black;
         }
         .content {
             position: absolute;
             top: 0;
             left: 50%;
-            transform: translateX(-50%); /* Center horizontally */
+            transform: translateX(-50%);
             z-index: 2;
-            color: white; /* Make sure text is visible */
-            /*padding-top: 50px; /* Add padding at the top so the text doesn't touch the top edge */
+            color: white;
         }
         h1 {
-            font-size: 4rem; /* Increased font size */
+            font-size: 4rem; 
             font-weight: bold;
-            white-space: nowrap; /* Prevent text from breaking into multiple lines */
-            overflow: hidden; /* Hide overflow text */
-            text-overflow: ellipsis; /* Show ellipsis if text overflows */
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis; 
         }
         p {
             font-size: 2rem;
         }
         button {
-            font-size: 1.2rem; /* Button text size */
-            padding: 15px 30px; /* Make button larger */
-            background-color: white; /* Spotify green */
+            font-size: 1.2rem; 
+            padding: 15px 30px;
+            background-color: white; 
             color: green;
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            transition: background-color 0.3s, transform 0.3s; /* Smooth transition */
+            transition: background-color 0.3s, transform 0.3s;
         }
         button:hover {
-            background-color: black; /* Lighter green on hover */
-            transform: scale(1.1); /* Slightly enlarge the button */
+            background-color: black; 
+            transform: scale(1.1);
         }
         .recommendations {
             margin-top: 20px;
@@ -71,7 +70,7 @@
 </head>
 <body>
 
-    <div class="background"></div> <!-- Background image -->
+    <div class="background"></div> 
     
     <div class="content">
         <h1>Spotify Song Recommender</h1>
