@@ -5,9 +5,64 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Spotify Song Recommender</title>
     <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%; /* Ensure the elements take up full height */
+        }
         body {
             font-family: Arial, sans-serif;
             text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start; /* Align content to the top */
+        }
+        
+        .background {
+            background-image: url("/static/Spotify_Full_Logo_RGB_Green.png");
+            background-size: 2000px;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: fixed; /* Fix the background image */
+            top: 0;
+            left: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            z-index: -1; /* Place it behind the content */
+            background-color: black;
+        }
+        .content {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%); /* Center horizontally */
+            z-index: 2;
+            color: white; /* Make sure text is visible */
+            /*padding-top: 50px; /* Add padding at the top so the text doesn't touch the top edge */
+        }
+        h1 {
+            font-size: 4rem; /* Increased font size */
+            font-weight: bold;
+            white-space: nowrap; /* Prevent text from breaking into multiple lines */
+            overflow: hidden; /* Hide overflow text */
+            text-overflow: ellipsis; /* Show ellipsis if text overflows */
+        }
+        p {
+            font-size: 2rem;
+        }
+        button {
+            font-size: 1.2rem; /* Button text size */
+            padding: 15px 30px; /* Make button larger */
+            background-color: white; /* Spotify green */
+            color: green;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s; /* Smooth transition */
+        }
+        button:hover {
+            background-color: black; /* Lighter green on hover */
+            transform: scale(1.1); /* Slightly enlarge the button */
         }
         .recommendations {
             margin-top: 20px;
@@ -16,20 +71,20 @@
 </head>
 <body>
 
-    <h1>Spotify Song Recommender</h1>
-    <p>Click below to log in and get song recommendations based on your Spotify account.</p>
-    <a href="/login"><button>Login with Spotify</button></a>
+    <div class="background"></div> <!-- Background image -->
+    
+    <div class="content">
+        <h1>Spotify Song Recommender</h1>
+        <p>Click below to log in and get song recommendations based on your Spotify account.</p>
+        <a href="/login"><button>Login with Spotify</button></a>
 
-    {% if top_tracks %}
-    <div class="recommendations">
-        <h2>Your Recommendations</h2>
-        <ul id="songs-list">
-            {% for song in top_tracks %}
-                <li>{{ song }}</li>
-            {% endfor %}
-        </ul>
+        <div class="recommendations">
+            <h2>Your Recommendations</h2>
+            <ul id="songs-list">
+                    <li></li>
+            </ul>
+        </div>
     </div>
-    {% endif %}
 
 </body>
 </html>
