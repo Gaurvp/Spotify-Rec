@@ -1,13 +1,14 @@
 from flask import Flask, redirect, request, session, url_for, render_template
 from spotipy import Spotify
 from spotipy.oauth2 import SpotifyOAuth
+import os
 
 app = Flask(__name__)
 
-# Replace these with your app credentials
-CLIENT_ID = '55798633e9e44c5dbe0eb8c2d963a0c9'
-CLIENT_SECRET = '90ffef88c93842d9afd4441886d6ecda'
-REDIRECT_URI = 'http://localhost:8888/callback'
+CLIENT_ID = os.environ.get('SPOTIFY_CLIENT_ID')
+CLIENT_SECRET = os.environ.get('SPOTIFY_CLIENT_SECRET')
+REDIRECT_URI = os.environ.get('SPOTIFY_REDIRECT_URI')
+
 
 SCOPE = 'user-library-read user-top-read playlist-modify-public'
 
