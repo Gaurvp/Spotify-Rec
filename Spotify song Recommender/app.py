@@ -5,7 +5,7 @@ from spotipy.oauth2 import SpotifyOAuth
 import os
 
 
-app = Flask(__name__, static_folder='Static')
+app = Flask(__name__, static_folder='Spotify Song Recommender/static')
 
 CLIENT_ID = os.environ.get('SPOTIFY_CLIENT_ID')
 CLIENT_SECRET = os.environ.get('SPOTIFY_CLIENT_SECRET')
@@ -18,9 +18,11 @@ app.secret_key = 'the_secret_key_is_secret'
 
 sp_oauth = SpotifyOAuth(client_id=CLIENT_ID, client_secret=CLIENT_SECRET, redirect_uri=REDIRECT_URI, scope=SCOPE)
 
-@app.route('/Static/<path:path>')
-def static_file(path):
-    return send_from_directory('Static', path)
+
+@app.route('/static/<path:filename>')
+def serve_static(filename):
+    return send_from_directory(app.static_folder, filename)
+
     
 @app.route('/')
 def index():
